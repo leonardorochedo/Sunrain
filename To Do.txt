@@ -1,0 +1,6 @@
+() Consumir API OpenWeather
+() Criar o card
+() Estilizar
+
+() Fazer com que o usuario consiga criar muitos cards de previsão
+() *Responsividade*
