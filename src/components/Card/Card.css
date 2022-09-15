@@ -52,6 +52,10 @@ p.city-temp {
     text-align: -webkit-center;
 }
 
+p.city-description::first-letter {
+    text-transform: uppercase;
+}
+
 img.country {
     height: 1.75rem;
 }
