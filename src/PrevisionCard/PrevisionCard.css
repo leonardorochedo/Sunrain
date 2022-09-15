@@ -25,7 +25,8 @@
 /* Elements */
 .form-input input {
     height: 2rem;
-    width: 15rem;
+    width: 14rem;
+    padding: 0.7rem;
 
     border: none;
     border-radius: 5px;
@@ -57,6 +58,7 @@ h2.city-name {
 
 p.city-temp {
     margin-top: 2rem;
+    text-align: -webkit-center;
 }
 
 img.country {
