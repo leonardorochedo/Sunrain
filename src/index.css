@@ -9,7 +9,6 @@
 
 body {
   background: linear-gradient(180deg, #ee514c 0%, #f5b08d 100%);
-  /* background: url("https://api.unsplash.com/search/photos?page=1&query=office"); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +23,7 @@ body {
   border-radius: 25px;
 
   background-color: #000000ce;
+  background-blend-mode: overlay;
 
   box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
 }

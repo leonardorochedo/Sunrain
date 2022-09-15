@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { BsFillDropletFill } from 'react-icons/bs'
 import { FaSearch, FaMapPin, FaWind } from 'react-icons/fa'
@@ -9,16 +9,31 @@ export function Card() {
 
     // Cidade que estamos buscando
     const [city, setCity] = useState({ name: '', country: 'br', weatherIcon: '', temp: 0, description: '', humidity: '', wind: '' })
+    const [bgImg, setBgImg] = useState({ image: '' })
     // Valor do input
     const [cityName, setCityName] = useState('Londrina')
     
-    const APIKey = "f8620e3ccd0f4db1f3024ae2085e9600"
+    const APIKeyOW = "f8620e3ccd0f4db1f3024ae2085e9600"
+    const APIKeyUN = "Y7flmph8HVMLPwjiEAQOgxv5dkFFvK2gtPEI3KUorsk"
     
+    useEffect(() => {
+
+        // Unsplash
+        fetch(`https://api.unsplash.com/search/photos?query=${cityName}&client_id=${APIKeyUN}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setBgImg({
+                image: data.results[0].urls.thumb,
+            })
+        })
+
+    }, [cityName])
+
     function consultAPI() {
     
         // OpenWeather
         fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKey}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKeyOW}`
             )
             .then((response) => response.json())
             .then((data) => {
@@ -32,7 +47,7 @@ export function Card() {
                     wind: data.wind.speed,
                   });
                 });
-    
+        
     }
     
     // CountryFlags
@@ -41,7 +56,7 @@ export function Card() {
     const weatherIconLink = `http://openweathermap.org/img/wn/${city.weatherIcon}`
 
     return (
-        <div className='container'>
+        <div className='container' style={{ backgroundImage: `url('${bgImg.image}')`, backgroundRepeat: 'no-repeat', backgroundSize: '35rem' }}>
         <div className="form">
                 <div className="form-input">
                     <input type="text" placeholder='Digite o nome da cidade' onChange={(e) => setCityName(e.target.value)} />
