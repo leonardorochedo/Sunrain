@@ -1,0 +1,59 @@
+/* Divs */
+.form {
+    margin-bottom: 2rem;
+}
+
+.form-input {
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.weather-description {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Elements */
+.form-input input {
+    height: 2rem;
+    width: 14rem;
+    padding: 0.7rem;
+
+    border: none;
+    border-radius: 5px;
+
+    color: black;
+}
+
+.form-input button {
+    height: 2rem;
+    width: 2rem;
+}
+
+/* Fonts */
+h2.city-name {
+    display: flex;
+    justify-content: space-around;
+}
+
+p.city-temp {
+    margin-top: 2rem;
+    text-align: -webkit-center;
+}
+
+img.country {
+    height: 1.75rem;
+}
+
+img.temp {
+    height: 2.5rem;
+}

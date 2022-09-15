@@ -1,0 +1,17 @@
+.container-app {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    margin: -4rem 0 2rem 0;
+}
+
+h1#header {
+    font-size: 44px;
+    font-weight: 700;
+    font-style: italic;
+}

@@ -17,6 +17,7 @@ body {
 }
 
 .container {
+  /* width: 20rem; */
   padding: 2rem;
 
   border: 2px rgb(255, 255, 255) solid;
@@ -41,4 +42,19 @@ span#drop svg {
 span#wind svg {
   stroke: #c0bbbb;
   fill: #c0bbbb;
+}
+
+/* Button */
+button {
+  background-color: #3535eb;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.75;
+  transition: 0.3s;
 }
