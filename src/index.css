@@ -26,6 +26,8 @@ body {
   background-blend-mode: overlay;
 
   box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+
+  margin: 0 2rem;
 }
 
 /* Icons */
@@ -57,4 +59,10 @@ button {
 button:hover {
   opacity: 0.75;
   transition: 0.3s;
+}
+
+@media (max-width: 430px) {
+  .container {
+    margin-bottom: 2rem;
+  }
 }

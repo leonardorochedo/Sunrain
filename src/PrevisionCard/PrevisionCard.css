@@ -13,3 +13,14 @@ button#add-card {
 
     margin-bottom: 2rem;
 }
+
+@media (max-width: 430px) {
+    .container-cards {
+        display: flex;
+        flex-direction: column;
+    
+        width: 70vw;
+    
+        justify-content: space-around;
+    }
+}
