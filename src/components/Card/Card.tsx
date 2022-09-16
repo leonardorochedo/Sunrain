@@ -67,12 +67,12 @@ export function Card() {
     }, [APIStatus.code])
 
     // Caso o usuário de enter no form
-    // document.addEventListener('keypress', async function(e){
-    //     if(e.key == "Enter"){
-    //         const buttonForm = document.getElementById('search')?.click()
-    //         console.log('Enter')
-    //     }
-    //  }, false);
+    document.addEventListener('keypress', async function(e){
+        if(e.key == "Enter"){
+            const buttonForm = document.getElementById('search')?.click()
+            console.log('Enter')
+        }
+     }, false);
 
     // CountryFlags
     const countryFlag = `https://countryflagsapi.com/png/${city.country}`
