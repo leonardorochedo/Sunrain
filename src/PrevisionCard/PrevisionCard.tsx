@@ -8,10 +8,16 @@ import './PrevisionCard.css';
 export function PrevisionCard() {
 
     const [isPressed, setIsPressed] = useState(false)
+    const [text, setText] = useState('')
 
     function addCard() {
         if (isPressed) {
-            alert("Número máximo de consultas")
+            if (text == 'É permitido apenas 2 consultas ao mesmo tempo!') {
+                setText('')
+            } else {
+                setText('É permitido apenas 2 consultas ao mesmo tempo!')
+                setInterval(() => {setText('')}, 3500)
+            }
         } else {
             setIsPressed(true)
         }
@@ -20,7 +26,10 @@ export function PrevisionCard() {
 
     return (
     <>
-        <button id='add-card' onClick={addCard}><AiOutlineAppstoreAdd size={25}/></button>
+        <div className="button">
+            <button id='add-card' onClick={addCard}><AiOutlineAppstoreAdd size={25}/></button>
+            <h3>{text}</h3>
+        </div>
         <div className='container-cards'>
             <Card />
             {isPressed && <Card />}

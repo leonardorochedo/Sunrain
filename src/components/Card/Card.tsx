@@ -8,11 +8,14 @@ import './Card.css'
 export function Card() {
 
     // Cidade que estamos buscando
+    const [APIStatus, setAPIStatus] = useState({ code: 0 })
+    const [error404, setError404] = useState('')
     const [city, setCity] = useState({ name: '', country: 'br', weatherIcon: '03d', temp: 0, description: '', humidity: '', wind: '' })
     const [bgImg, setBgImg] = useState({ image: '' })
     // Valor do input
     const [cityName, setCityName] = useState('')
     
+    // Chaves da API
     const APIKeyOW = "f8620e3ccd0f4db1f3024ae2085e9600"
     const APIKeyUN = "Y7flmph8HVMLPwjiEAQOgxv5dkFFvK2gtPEI3KUorsk"
     
@@ -31,12 +34,15 @@ export function Card() {
 
     function consultAPI() {
     
-        // OpenWeather
+        // Verificando o código da API
         fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKeyOW}&units=metric&lang=pt_br`
             )
             .then((response) => response.json())
             .then((data) => {
+                setAPIStatus({
+                    code: data.cod,
+                  }),
                 setCity({
                     name: data.name,
                     country: data.sys.country,
@@ -45,10 +51,28 @@ export function Card() {
                     temp: parseInt(data.main.temp),
                     humidity: data.main.humidity,
                     wind: data.wind.speed,
-                  });
                 });
-        
+                });
     }
+
+    // Tratando a entrada de dados da API
+    useEffect(() => {
+        if (APIStatus.code == 200) {
+            setError404('')
+        }
+        
+        if (APIStatus.code == 404){
+            setError404('Digite uma cidade válida!')
+        }
+    }, [APIStatus.code])
+
+    // Caso o usuário de enter no form
+    // document.addEventListener('keypress', async function(e){
+    //     if(e.key == "Enter"){
+    //         const buttonForm = document.getElementById('search')?.click()
+    //         console.log('Enter')
+    //     }
+    //  }, false);
 
     // CountryFlags
     const countryFlag = `https://countryflagsapi.com/png/${city.country}`
@@ -57,14 +81,15 @@ export function Card() {
 
     return (
         <div className='container' style={{ backgroundImage: `url('${bgImg.image}')`, backgroundRepeat: 'no-repeat', backgroundSize: '35rem' }}>
-        <div className="form">
+            <div className="form">
+                <h3 id='status-code'>{error404}</h3>
                 <div className="form-input">
-                    <input type="text" placeholder='Digite o nome da cidade' onChange={(e) => setCityName(e.target.value)} />
+                    <input autoFocus type="text" placeholder='Digite o nome da cidade' onChange={(e) => setCityName(e.target.value)}/>
                     <button id='search' onClick={consultAPI}><FaSearch/></button>
                 </div>
             </div>
 
-        <div className="card-info">
+            <div className="card-info">
                 <h2 className='city-name'><span id='pin'><FaMapPin/></span> {city.name} <img className='country' src={countryFlag} alt="Bandeira do país" /></h2>
                 <p className='city-temp'>{city.temp} &deg;C</p>
                 <div className="weather-description">
@@ -75,7 +100,7 @@ export function Card() {
                     <p className='city-umidity'><span id='drop'><BsFillDropletFill/></span> {city.humidity}%</p>
                     <p className='city-wind'><span id='wind'><FaWind/></span> {city.wind}km/h</p>
                 </div>
-        </div>
+            </div>
         </div>
     );
 }

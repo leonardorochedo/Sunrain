@@ -42,6 +42,16 @@
 }
 
 /* Fonts */
+h3#status-code {
+    font-style: italic;
+
+    align-items: center;
+    justify-content: center;
+    text-align: -webkit-center;
+
+    color: red;
+}
+
 h2.city-name {
     display: flex;
     justify-content: space-around;
