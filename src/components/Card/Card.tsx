@@ -67,12 +67,11 @@ export function Card() {
     }, [APIStatus.code])
 
     // Caso o usuário de enter no form
-    // document.addEventListener('keypress', async function(e){
-    //     if(e.key == "Enter"){
-    //         const buttonForm = document.getElementById('search')?.click()
-    //         console.log('Enter')
-    //     }
-    //  }, false);
+    function validKeyPress(e:any) {
+        if(e.key == 'Enter') {
+            consultAPI()
+        }
+    }
 
     // CountryFlags
     const countryFlag = `https://countryflagsapi.com/png/${city.country}`
@@ -84,7 +83,7 @@ export function Card() {
             <div className="form">
                 <h3 id='status-code'>{error404}</h3>
                 <div className="form-input">
-                    <input autoFocus type="text" placeholder='Digite o nome da cidade' onChange={(e) => setCityName(e.target.value)}/>
+                    <input autoFocus type="text" placeholder='Digite o nome da cidade' onChange={(e) => setCityName(e.target.value)} onKeyUp={(e) => validKeyPress(e)} />
                     <button id='search' onClick={consultAPI}><FaSearch/></button>
                 </div>
             </div>
